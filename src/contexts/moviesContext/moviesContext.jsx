@@ -29,8 +29,9 @@ export const MoviesProvider = ({ children }) => {
         return res.data.cast;
     }
     const getMoviesOfActor = async (id) => {
-        const res = await axios.get(`${base_url}/person/${id}/movie_credits?api_key=${api_key}`);
-        return res.data.cast;
+        const res = await axios.get(`${base_url}/person/${id}/combined_credits?api_key=${api_key}`);
+        console.log('res' , res)
+        return res.data.crew;
     }
     const getActorNameById = async (id) => {
         const res = await axios.get(`${base_url}/person/${id}?api_key=${api_key}`);

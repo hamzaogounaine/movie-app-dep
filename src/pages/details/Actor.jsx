@@ -42,17 +42,17 @@ const Actor = () => {
           <div className="relative bg-background h-fit sm:w-1/3 max-sm:my-2">
                 <SearchIcon onClick={handleSearch} className="cursor-pointer absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
                 <Input value={search} type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search..." className="pl-8 w-full bg-background text-foreground" />
-          {search && <Button onClick={() => {setSearch(''), setReset(true) }} className='text-background float-end'>Clear Search</Button>}
+          {search && <span onClick={() => {setSearch(''), setReset(true) }} className='text-foreground cursor-pointer float-end'>Clear Search</span>}
               </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {movies && movies.map((movie) => (
-              <Link to={`/movie/${movie.id}`} key={movie.id}>
+              <Link to={`/${movie.media_type || 'movie'}/${movie.id}`} key={movie.id}>
                 <Card className="flex flex-col">
                   <CardHeader>
-                    <CardTitle className="line-clamp-1">{movie.title}</CardTitle>
-                    <CardDescription>Released: {new Date(movie.release_date).toLocaleDateString()}</CardDescription>
+                    <CardTitle className="line-clamp-1 text-lg font-bold">{movie.title || movie.name}</CardTitle>
+                    <CardDescription>Released: {new Date(movie.release_date || movie.first_air_date).toLocaleDateString()}</CardDescription>
                   </CardHeader>
                   <CardContent className="flex-grow">
                     <div className="aspect-[2/3] relative mb-4">
