@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/button";
 import { CodeSandboxLogoIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import { useAuth } from '../../contexts/authContext/authContext';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import Cast from './Cast';
 
 
 const Movie = () => {
@@ -35,116 +36,98 @@ const Movie = () => {
   const { mode } = useAuth();
   return (
     <div className={mode}>
-    {!movie && <div className='flex justify-center min-h-screen w-full items-center bg-background'><Loader className='animate-spin text-foreground'/></div>}
-    {movie && (
-      <div className={`min-h-screen bg-background text-foreground `}>
-        {/* Backdrop */}
-        <div className="relative h-[50vh] w-full">
-          <img
-            src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
-            alt={movie.title}
-            className="w-full h-full object-cover brightness-50"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
-        </div>
+      {!movie && <div className='flex justify-center min-h-screen w-full items-center bg-background'><Loader className='animate-spin text-foreground' /></div>}
+      {movie && (
+        <div className={`${mode} min-h-screen bg-foreground text-background`}>
 
-        {/* Movie Details */}
-        <div className="container mx-auto px-4 py-8 -mt-32 relative z-10">
-          <div className="flex flex-col md:flex-row gap-8">
-            {/* Poster */}
-            <div className="flex-shrink-0">
-              <img
-                src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
-                alt={movie.title}
-                width={300}
-                height={450}
-                className="rounded-lg shadow-lg"
-              />
-            </div>
+          {/* Backdrop */}
+          <div className="relative h-[50vh] w-full">
+            <img
+              src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
+              alt={movie.title}
+              className="w-full h-full object-cover brightness-50"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-foreground to-transparent" />
+          </div>
 
-            {/* Info */}
-            <div className="flex-grow">
-              <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
-              <p className="text-xl text-muted-foreground mb-4">{movie.original_title}</p>
-
-              <div className="flex items-center space-x-4 mb-4">
-                <div className="flex items-center">
-                  <StarFilledIcon className="w-5 h-5 text-yellow-400 mr-1" />
-                  <span>{movie.vote_average.toFixed(1)}</span>
-                </div>
-                <div className="flex items-center">
-                  <Calendar className="w-5 h-5 mr-1" />
-                  <span>{movie.release_date}</span>
-                </div>
+          {/* Movie Details */}
+          <div className="container mx-auto px-4 py-8 -mt-32 relative z-10">
+            <div className="flex flex-col md:flex-row gap-8">
+              {/* Poster */}
+              <div className="flex-shrink-0">
+                <img
+                  src={`https://image.tmdb.org/t/p/original${movie.poster_path}`}
+                  alt={movie.title}
+                  width={300}
+                  height={450}
+                  className="rounded-lg shadow-lg"
+                />
               </div>
 
-              <div className="mb-4">
-                {movie.genres.map((genre) => (
-                  <span
-                    key={genre.id}
-                    className="font-[poppins] inline-block bg-primary text-primary-foreground rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2"
-                  >
-                    {genre.name || 'Unknown'}
-                  </span>
-                ))}
-              </div>
+              {/* Info */}
+              <div className="flex-grow">
+                <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
+                <p className="text-xl text-muted-foreground mb-4">{movie.original_title}</p>
 
-              <p className="text-lg mb-6 font-[poppins]">{movie.overview}</p>
+                <div className="flex items-center space-x-4 mb-4">
+                  <div className="flex items-center">
+                    <StarFilledIcon className="w-5 h-5 text-yellow-400 mr-1" />
+                    <span>{movie.vote_average.toFixed(1)}</span>
+                  </div>
+                  <div className="flex items-center">
+                    <Calendar className="w-5 h-5 mr-1" />
+                    <span>{movie.release_date}</span>
+                  </div>
+                </div>
 
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">Original Language</h3>
-                  <p>{movie.original_language.toUpperCase()}</p>
+                <div className="mb-4">
+                  {movie.genres.map((genre) => (
+                    <span
+                      key={genre.id}
+                      className="font-[poppins] inline-block bg-primary text-primary-foreground rounded-full px-3 py-1 text-sm font-semibold mr-2 mb-2"
+                    >
+                      {genre.name || 'Unknown'}
+                    </span>
+                  ))}
                 </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">Origin Country</h3>
-                  {movie.production_countries.length > 0 && (
-                    <img
-                      src={`https://flagcdn.com/w320/${movie.production_countries[0].iso_3166_1.toLowerCase()}.png`}
-                      width={40}
-                      alt={movie.production_countries[0].name}
-                    />
-                  )}
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">Vote Count</h3>
-                  <p>{movie.vote_count}</p>
-                </div>
-                <div>
-                  <h3 className="text-lg font-semibold mb-1">Adult</h3>
-                  <p>{movie.adult ? 'Yes' : 'No'}</p>
+
+                <p className="text-lg mb-6 font-[poppins]">{movie.overview}</p>
+
+                <div className="grid grid-cols-2 gap-4">
+                  <div>
+                    <h3 className="text-lg font-semibold mb-1">Original Language</h3>
+                    <p>{movie.original_language.toUpperCase()}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-1">Origin Country</h3>
+                    {movie.production_countries.length > 0 && (
+                      <img
+                        src={`https://flagcdn.com/w320/${movie.production_countries[0].iso_3166_1.toLowerCase()}.png`}
+                        width={40}
+                        alt={movie.production_countries[0].name}
+                      />
+                    )}
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-1">Vote Count</h3>
+                    <p>{movie.vote_count}</p>
+                  </div>
+                  <div>
+                    <h3 className="text-lg font-semibold mb-1">Adult</h3>
+                    <p>{movie.adult ? 'Yes' : 'No'}</p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Cast Section */}
-        <div className="container mx-auto px-4 py-8">
-          <h2 className="text-2xl font-bold mb-4">Cast</h2>
-            <ScrollArea className="w-full h-full whitespace-nowrap rounded-md border ">
-                <div className="flex  h-full space-x-4 p-4">
+          {/* Cast Section */}
+          <div className="container mx-auto px-4 py-8">
+           <Cast cast={cast} />
+          </div>
 
-            {cast.map((actor) => (
-              <Link to={`/actor/${actor.id}`} key={actor.id} className="flex flex-col items-center">
-                <img
-                  src={`https://image.tmdb.org/t/p/original${actor.profile_path}`}
-                  alt={actor.name}
-                  height={150}
-                    width={150}
-                  className="w-32 h-32 object-cover rounded mb-2"
-                />
-                <p className="text-center text-sm font-semibold">{actor.name}</p>
-                <p className="text-center text-xs text-muted-foreground">{actor.character}</p>
-              </Link>
-            ))}
-                </div>
-                <ScrollBar orientation="horizontal" />
-            </ScrollArea>
-        </div>
-
-        {/* <h2 className="text-2xl font-bold mx-4 text-left">Recommended Movies</h2> */}
-        {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+          {/* <h2 className="text-2xl font-bold mx-4 text-left">Recommended Movies</h2> */}
+          {/* <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
           {recommendedMovies && recommendedMovies.map((recMovie) => (
             <Card key={recMovie.id} className="bg-white dark:bg-gray-900 text-gray-900 dark:text-white shadow-lg">
               <CardHeader>
@@ -172,9 +155,9 @@ const Movie = () => {
             </Card>
           ))}
         </div> */}
-      </div>
-    )}
-      </div>
+        </div>
+      )}
+    </div>
   );
 };
 

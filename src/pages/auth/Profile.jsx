@@ -101,7 +101,7 @@ const Profile = () => {
     return (
         <div>
             {user === null ? <Navigate to="/login" /> :
-                <div className={`container mx-auto py-10 bg-secondary-foreground ${mode}`}>
+                <div className={` mx-auto py-10 bg-secondary-foreground ${mode}`}>
                     <Card className="max-w-2xl mx-auto bg-background ">
                         <CardHeader>
                             <CardTitle>User user</CardTitle>

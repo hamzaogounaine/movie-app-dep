@@ -28,6 +28,10 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/movie/${id}/credits?api_key=${api_key}`);
         return res.data.cast;
     }
+    const getTvCast = async (id) => {
+        const res = await axios.get(`${base_url}/tv/${id}/credits?api_key=${api_key}`);
+        return res.data.cast;
+    }
     const getMoviesOfActor = async (id) => {
         const res = await axios.get(`${base_url}/person/${id}/combined_credits?api_key=${api_key}`);
         console.log('res' , res)
@@ -37,6 +41,14 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/person/${id}?api_key=${api_key}`);
         return res.data.name;
     }
+    const getSearchResults = async (query) => {
+        const res = await axios.get(`${base_url}/search/multi?api_key=${api_key}&query=${query}`);
+        return res.data.results;
+    }
+    const getMoviesAndSortAndPaginate = async (sortBy, page) => {
+        const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
+        return res.data;
+    }
     return (
         <MoviesContext.Provider value={{
             getTrendingMovies,
@@ -45,7 +57,10 @@ export const MoviesProvider = ({ children }) => {
             getTvById,
             getMovieCast,
             getMoviesOfActor,
-            getActorNameById
+            getActorNameById,
+            getSearchResults,
+            getTvCast,
+            getMoviesAndSortAndPaginate
         }}>
             {children}
         </MoviesContext.Provider>

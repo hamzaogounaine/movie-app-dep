@@ -10,6 +10,8 @@ import Profile from './pages/auth/Profile';
 import Movie from './pages/details/Movie';
 import Tv from './pages/details/Tv';
 import Actor from './pages/details/Actor';
+import SearchPage from './pages/search/Search';
+import MovieBrowser from './pages/Movies';
 
 
 function App() {
@@ -25,6 +27,8 @@ function App() {
         <Route path="/movie/:id" element={<Movie />} />
         <Route path="/tv/:id" element={<Tv />} />
         <Route path="/actor/:id" element={<Actor />} />
+        <Route path="/search/:query" element={<SearchPage />} />
+        <Route path="/movies" element={<MovieBrowser />} />
       </Routes>
       <Footer />
     </Router>

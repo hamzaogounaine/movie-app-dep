@@ -1,36 +1,42 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { Star, Calendar, ThumbsUp } from 'lucide-react';
 import { useMovies } from '../../contexts/moviesContext/moviesContext';
 import { Button } from "@/components/ui/button";
 import { CodeSandboxLogoIcon, StarFilledIcon } from '@radix-ui/react-icons';
 import { useAuth } from '../../contexts/authContext/authContext';
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area"
+import Cast from './Cast';
+
 
 const Tv = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();
-  const { getTvById } = useMovies();
+  const { getTvById ,getTvCast} = useMovies();
+  const [cast, setCast] = useState([]);
 
   useEffect(() => {
+
     const fetchMovie = async () => {
       const res = await getTvById(id);
       setMovie(res);
-      console.log(res);
+      const tvcast = await getTvCast(id);
+      setCast(tvcast);
     };
     fetchMovie();
   }, [getTvById, id]);
-  const {mode} = useAuth()
+  const { mode } = useAuth()
   return (
     movie && (
-      <div className={`${mode} min-h-screen bg-background text-foreground`}>
+      <div className={`${mode} min-h-screen bg-foreground text-background`}>
         {/* Backdrop */}
-        <div className="relative h-[50vh] w-full">
+        <div className="relative h-[50vh] w-full ">
           <img
             src={`https://image.tmdb.org/t/p/original${movie.backdrop_path}`}
             alt={movie.title}
             className="w-full h-full object-cover brightness-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-foreground to-transparent" />
         </div>
 
         {/* Movie Details */}
@@ -133,6 +139,10 @@ const Tv = () => {
                 </Card>
             ))}
         </div> */}
+
+        <div className="container mx-auto px-4 py-8">
+          <Cast cast={cast} />
+        </div>
       </div>
     )
   );
