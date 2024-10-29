@@ -10,7 +10,7 @@ const SingleMovies = ({movie}) => {
   return (
     <div className={mode}>
         <Link to={`/${movie.media_type || 'movie'}/${movie.id}`} key={movie.id} >
-                <Card className="flex flex-col bg-foreground text-background">
+                <Card className="flex flex-col bg-secondary text-foreground">
                   <CardHeader>
                     <CardTitle className="line-clamp-1 text-lg font-bold">{movie.title || movie.name}</CardTitle>
                     <CardDescription>Released: {new Date(movie.release_date || movie.first_air_date).toLocaleDateString()}</CardDescription>
@@ -23,7 +23,7 @@ const SingleMovies = ({movie}) => {
                         className="object-cover rounded-md w-full h-full"
                       />
                     </div>
-                    <Badge className="mb-2 bg-yellow-400 text-black">{movie.vote_average.toFixed(2)/2}</Badge>
+                    <Badge className="mb-2 bg-yellow-400 text-black">{movie.vote_average && movie.vote_average.toFixed(2)/2}</Badge>
                     
                     <ScrollArea className="h-24">
                       <p className="text-sm text-muted-foreground">{movie.overview}</p>

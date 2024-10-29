@@ -9,7 +9,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Toggle } from "@/components/ui/toggle"
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet"
-import { ArrowUpToLine, LogOutIcon, MenuIcon, MoonIcon, SearchIcon, User, User2 } from "lucide-react"
+import { ArrowUpToLine, LogOutIcon, MenuIcon, MoonIcon, SearchIcon, SunIcon, User, User2 } from "lucide-react"
 import { useAuth } from "../contexts/authContext/authContext"
 import { logOut } from "../firebase/auth"
 
@@ -20,7 +20,7 @@ export default function Navbar() {
     }
     
   return (
-    <header className={`sticky  top-0 z-50 w-full border-b bg-secondary-foreground  border-foreground ${mode}`}>
+    <header className={`sticky  top-0 z-50 w-full border-b bg-secondary  border-foreground ${mode}`}>
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
         <Link to="/" className="flex items-center gap-2" prefetch={false}>
           <img src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png" className="h-10 w-10" />
@@ -112,8 +112,10 @@ export default function Navbar() {
             </DropdownMenuContent>
 
           </DropdownMenu>
-          <Toggle aria-label="Toggle dark mode" className="rounded-full">
-            <MoonIcon onClick={() => toggleMode()} className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+          <Toggle aria-label="Toggle mode" className="rounded-full bg-background" onClick={() => toggleMode()}>
+            {mode === 'dark' ? <SunIcon  className="h-5 w-5 text-gray-500 dark:text-gray-400" />:
+            <MoonIcon  className="h-5 w-5 text-gray-500 dark:text-gray-400" />}
+            
           </Toggle>
           <Sheet>
             <SheetTrigger asChild>

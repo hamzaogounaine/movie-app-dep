@@ -62,7 +62,7 @@ export default function MovieBrowser() {
   }
 
   return (
-    <div className={`bg-foreground text-background mx-auto px-4 py-8 ${mode}`}>
+    <div className={`bg-background text-foreground mx-auto px-4 py-8 ${mode}`}>
       <h1 className="text-4xl font-bold mb-8 text-center">TMDB Movie Browser</h1>
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div className="relative w-full md:w-1/3">

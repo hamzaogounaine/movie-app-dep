@@ -6,8 +6,8 @@ import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 const MediaList = ({ title, media, genres, posterBase, icon: Icon }) => {
   return (
     <div className="px-4 md:px-6">
-      <h2 className="text-2xl font-bold text-secondary tracking-tighter sm:text-4xl items-center my-4 flex gap-3">
-        {title} <Icon className='w-10 h-10 text-secondary' />
+      <h2 className="text-2xl font-bold text-foreground tracking-tighter sm:text-4xl items-center my-4 flex gap-3">
+        {title} <Icon className='w-10 h-10 text-foreground' />
       </h2>
       <ScrollArea className="w-full h-full whitespace-nowrap rounded-md ">
         <div className="flex h-full space-x-4 p-4">

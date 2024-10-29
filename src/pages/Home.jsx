@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { CarrotIcon, Clock, Loader, Search, TrendingUp, Tv } from "lucide-react";
 import { useMovies } from '../contexts/moviesContext/moviesContext';
 import MediaList from './details/MediaList';
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
 
 const Home = () => {
   const { isAuthenticated, user, mode } = useAuth();
@@ -37,6 +38,7 @@ const Home = () => {
   const poster_base = "https://image.tmdb.org/t/p/original";
   const navigate = useNavigate();
   const [search, setSearch] = useState("");
+  const [suggestions, setSuggestions] = useState([]);
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -44,7 +46,7 @@ const Home = () => {
     }
   }, [isAuthenticated, navigate]);
 
-  const { getTrendingMovies, getTrendingMoviesByGenre } = useMovies();
+  const { getTrendingMovies, getTrendingMoviesByGenre, getSeuggestions } = useMovies();
 
   useEffect(() => {
     const fetchTrendingMovies = async () => {
@@ -61,6 +63,14 @@ const Home = () => {
     fetchTrendingMovies();
   }, [getTrendingMovies, getTrendingMoviesByGenre]);
 
+  useEffect(() => {
+    const fetchSuggestions = async () => {
+      const res = await getSeuggestions(search);
+      setSuggestions(res);
+    }
+    fetchSuggestions()
+  }, [search])
+
   return (
     <div className={`bg-background min-h-screen text-foreground ${mode}`}>
       <main className="flex-1">
@@ -76,10 +86,24 @@ const Home = () => {
                 </p>
               </div>
               <div className="w-full max-w-sm space-y-2">
-                <div className="flex space-x-2">
-                  <Input onChange={(e) => setSearch(e.target.value)} className="max-w-lg flex-1 text-foreground border-foreground" placeholder="Search movies..." type="search" />
+                <div className="flex space-x-2 relative">
+                  <Input value={search} onChange={(e) => setSearch(e.target.value)} className="max-w-[300px] h-9 flex-1 text-foreground border-foreground" placeholder="Search movies..." type="search" />
+                  <div className='absolute -left-2 top-9  text-foreground text-left bg-background  w-[300px] rounded'>
+                    <ScrollArea className='max-h-40 whitespace-nowrap flex flex-col'>
+
+                      {suggestions && suggestions.map((suggestion) => (
+                        <div key={suggestion.id} className="cursor-pointer p-2 border-y-[0.2px] border-foreground hover:bg-slate-500" onClick={() => navigate(`/search/query=${suggestion.title || suggestion.name}`)}>
+                          <img src={suggestion.poster_path ? `${poster_base}${suggestion.poster_path}` : 'default_image_url'} alt={suggestion.title} className="w-8 h-12 inline-block mr-2" />
+                          {suggestion.title || suggestion.name}
+                        </div>
+                      )
+                    )}
+                    <ScrollBar orientation="vertical" className="bg-foreground rounded" />
+
+                    </ScrollArea>
+                  </div>
                   <Button type="" variant="secondary" onClick={() => navigate(`/search/query=${search}`)}>
-                    <Search className="h-4 w-4"/>
+                    <Search className="h-4 w-4" />
                     <span className="sr-only">Search</span>
                   </Button>
                 </div>
@@ -88,7 +112,7 @@ const Home = () => {
           </div>
         </section>
 
-        <section className="w-full py-10 bg-secondary-foreground">
+        <section className="w-full py-10 bg-background">
           <MediaList title="Trending Now" media={trending} genres={genres} posterBase={poster_base} icon={TrendingUp} />
           <MediaList title="Science Fiction" media={ScFi} genres={genres} posterBase={poster_base} icon={Tv} />
           <MediaList title="Action" media={action} genres={genres} posterBase={poster_base} icon={Clock} />

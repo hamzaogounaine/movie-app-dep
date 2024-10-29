@@ -1,6 +1,5 @@
 import { createContext, useContext } from "react";
 import axios from "axios";
-
 const MoviesContext = createContext();
 
 export const MoviesProvider = ({ children }) => {
@@ -49,6 +48,10 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
         return res.data;
     }
+    const getSeuggestions = async (query) => {
+        const res = await axios.get(`${base_url}/search/multi?api_key=${api_key}&query=${query}`);
+        return res.data.results;
+    }
     return (
         <MoviesContext.Provider value={{
             getTrendingMovies,
@@ -60,7 +63,8 @@ export const MoviesProvider = ({ children }) => {
             getActorNameById,
             getSearchResults,
             getTvCast,
-            getMoviesAndSortAndPaginate
+            getMoviesAndSortAndPaginate,
+            getSeuggestions
         }}>
             {children}
         </MoviesContext.Provider>

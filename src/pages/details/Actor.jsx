@@ -30,7 +30,7 @@ const Actor = () => {
     const {mode} = useAuth()
 
     useEffect(() => {
-      setMovies(movies.filter(movie => movie.title.toLowerCase().includes(search.toLowerCase())))
+      setMovies(movies.filter(movie => movie.title.toString().toLowerCase().includes(search.toLowerCase())))
     }, [search])
     
   return (
@@ -38,14 +38,14 @@ const Actor = () => {
       {loading && <div className='flex justify-center min-h-screen w-full items-center bg-background'><Loader className='animate-spin text-foreground'/></div>}
       {!movies.length && <div className='flex justify-center min-h-screen w-full items-center bg-background'><p className='text-foreground'>No Movies Found</p></div>}
       {!loading && 
-        <div className={` px-6 bg-secondary-foreground mx-auto py-10`}>
+        <div className={` px-6 bg-secondary  mx-auto py-10`}>
           <div className='sm:flex justify-evenly'>
             {movies.length && actorName && 
-          <h1 className="text-4xl font-bold mb-8 text-center text-background">{actorName}'s Movies</h1>
+          <h1 className="text-4xl font-bold mb-8 text-center text-foreground">{actorName}'s Movies</h1>
           }
           <div className="relative bg-background h-fit sm:w-1/3 max-sm:my-2">
                 <SearchIcon  className="cursor-pointer absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                <Input value={search} type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search..." className="pl-8 w-full bg-background text-foreground rounded-md" />
+                <Input value={search} type="search" onChange={(e) => setSearch(e.target.value)} placeholder="Search..." className="pl-8 w-full bg-background text-foreground" />
           {search && <span onClick={() => {setSearch(''), setReset(true) }} className='text-foreground cursor-pointer float-end'>Clear Search</span>}
               </div>
           </div>

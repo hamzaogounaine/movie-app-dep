@@ -28,7 +28,7 @@ const Tv = () => {
   const { mode } = useAuth()
   return (
     movie && (
-      <div className={`${mode} min-h-screen bg-foreground text-background`}>
+      <div className={`${mode} min-h-screen bg-background text-foreground`}>
         {/* Backdrop */}
         <div className="relative h-[50vh] w-full ">
           <img
@@ -36,7 +36,7 @@ const Tv = () => {
             alt={movie.title}
             className="w-full h-full object-cover brightness-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-foreground to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
         </div>
 
         {/* Movie Details */}
