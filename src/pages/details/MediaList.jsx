@@ -11,7 +11,7 @@ const MediaList = ({ title, media, genres, posterBase, icon: Icon }) => {
       </h2>
       <ScrollArea className="w-full h-full whitespace-nowrap rounded-md ">
         <div className="flex h-full space-x-4 p-4">
-          {!media && <p className='h-[300px] flex justify-center items-center w-full'><Loader className='animate-spin' /></p>}
+          {!media && <p className='h-[300px] flex justify-center items-center w-full border rounded-md flex-col'><Loader className='animate-spin' />Fetching...</p>}
           {media && media.map((item, i) => (
             <Link to={`/${item.media_type || 'movie'}/${item.id}`} key={i} className="relative group w-[200px] overflow-hidden h-full rounded-lg">
               <img

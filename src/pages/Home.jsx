@@ -79,7 +79,7 @@ const Home = () => {
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
                 <h1 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl lg:text-6xl/none text-foreground">
-                  Welcome to CineMagic
+                  Welcome to Film Guild
                 </h1>
                 <p className="mx-auto max-w-[700px] text-secondary md:text-xl">
                   Discover, watch, and discuss the best films from around the world.

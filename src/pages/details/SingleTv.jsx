@@ -2,15 +2,14 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
-
+import { ScrollArea ,ScrollBar } from "@/components/ui/scroll-area"
 import { useAuth } from '../../contexts/authContext/authContext'
 
-const SingleMovies = ({movie}) => {
+const SingleTv = ({movie}) => {
   const {mode} = useAuth()
   return (
     <div className={mode}>
-        <Link to={`/${movie.media_type || 'movie'}/${movie.id}`} key={movie.id} >
+        <Link to={`/tv/${movie.id}`} key={movie.id} >
                 <Card className="flex flex-col bg-secondary text-foreground">
                   <CardHeader>
                     <CardTitle className="line-clamp-1 text-lg font-bold">{movie.title || movie.name}</CardTitle>
@@ -28,7 +27,7 @@ const SingleMovies = ({movie}) => {
                     
                     <ScrollArea className="h-24">
                       <p className="text-sm text-muted-foreground">{movie.overview}</p>
-                      <ScrollBar orientation="vertical" className=' rounded' size={1} />
+                      <ScrollBar orientation="vertical" className='bg-background rounded ' size={1} />
 
                     </ScrollArea>
                   </CardContent>
@@ -38,4 +37,4 @@ const SingleMovies = ({movie}) => {
   )
 }
 
-export default SingleMovies
+export default SingleTv

@@ -42,9 +42,9 @@ export default function Navbar() {
             <DropdownMenuContent className="p-4 flex flex-col gap-1">
               <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>All movies</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Arabic movies</Link>
+              <Link to="/ARmovies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Arabic movies</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>English movies</Link>
+              <Link to="/animation" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Animation movies</Link>
             </DropdownMenuContent>
           </DropdownMenu>
           <DropdownMenu >
@@ -53,9 +53,9 @@ export default function Navbar() {
               >TV series</button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4 flex flex-col gap-1">
-              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>All TV series</Link>
+              <Link to="/tvseries" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>All TV series</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Mini series</Link>
+              <Link to="/mini-series" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Mini series</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
               <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Top rated series</Link>
             </DropdownMenuContent>
