@@ -17,7 +17,7 @@ return (
     <div className={`${mode} flex bg-background flex-col items-center justify-center min-h-screen`}>
         <h2 className="text-2xl font-bold mb-4 text-foreground">Forgot Password</h2>
         {error && <p className="text-red-500">{error}</p>}
-        <form onSubmit={handleSubmit} className="bg-secondary-foreground p-6 rounded shadow-md w-full max-w-sm text" method='post'>
+        <form onSubmit={handleSubmit} className="bg-secondary p-6 rounded shadow-md w-full max-w-sm text" method='post'>
         {submitted && <p className="text-green-500 text-center">Password reset email sent</p>}
             <label htmlFor="email" className="block text-sm font-medium text-foreground">
                 Email:

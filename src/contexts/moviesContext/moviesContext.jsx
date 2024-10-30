@@ -48,13 +48,13 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
         return res.data;
     }
+    const getTVAndSortAndPaginate = async (sortBy, page) => {
+        const res = await axios.get(`${base_url}/discover/tv?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
+        return res.data;
+    }
     const getSeuggestions = async (query) => {
         const res = await axios.get(`${base_url}/search/multi?api_key=${api_key}&query=${query}`);
         return res.data.results;
-    }
-    const getMovieLogo = async (id) => {
-        const res = await axios.get(`${base_url}/movie/${id}/images?api_key=${api_key}`);
-        return res.data.logos.find(el => el.iso_639_1 = 'en').file_path;
     }
     return (
         <MoviesContext.Provider value={{
@@ -68,8 +68,7 @@ export const MoviesProvider = ({ children }) => {
             getSearchResults,
             getTvCast,
             getMoviesAndSortAndPaginate,
-            getSeuggestions,
-            getMovieLogo
+            getSeuggestions
         }}>
             {children}
         </MoviesContext.Provider>

@@ -55,8 +55,8 @@ const Tv = () => {
 
             {/* Info */}
             <div className="flex-grow">
-              <h1 className="text-4xl font-bold mb-2">{movie.title}</h1>
-              <p className="text-xl text-muted-foreground mb-4">{movie.original_title}</p>
+              <h1 className="text-4xl font-bold mb-2">{movie.name}</h1>
+              <p className="text-xl text-muted-foreground mb-4">{movie.original_name}</p>
 
               <div className="flex items-center space-x-4 mb-4">
                 <div className="flex items-center">
