@@ -7,6 +7,7 @@ import { CarrotIcon, Clock, Loader, Search, TrendingUp, Tv } from "lucide-react"
 import { useMovies } from '../contexts/moviesContext/moviesContext';
 import MediaList from './details/MediaList';
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { TrendingCarousel } from './details/TrendingCarousel';
 
 const Home = () => {
   const { isAuthenticated, user, mode } = useAuth();
@@ -74,6 +75,7 @@ const Home = () => {
   return (
     <div className={`bg-background min-h-screen text-foreground ${mode}`}>
       <main className="flex-1">
+
         <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-slate-600 dark:bg-slate-700">
           <div className="px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">

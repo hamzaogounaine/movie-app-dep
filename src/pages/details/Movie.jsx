@@ -38,7 +38,7 @@ const Movie = () => {
     <div className={mode}>
       {!movie && <div className='flex justify-center min-h-screen w-full items-center bg-background'><Loader className='animate-spin text-foreground' /></div>}
       {movie && (
-        <div className={`${mode} min-h-screen bg-foreground text-background`}>
+        <div className={`${mode} min-h-screen bg-background text-foreground`}>
 
           {/* Backdrop */}
           <div className="relative h-[50vh] w-full">
@@ -47,7 +47,7 @@ const Movie = () => {
               alt={movie.title}
               className="w-full h-full object-cover brightness-50"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-foreground to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent" />
           </div>
 
           {/* Movie Details */}

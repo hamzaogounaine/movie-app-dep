@@ -52,6 +52,10 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/search/multi?api_key=${api_key}&query=${query}`);
         return res.data.results;
     }
+    const getMovieLogo = async (id) => {
+        const res = await axios.get(`${base_url}/movie/${id}/images?api_key=${api_key}`);
+        return res.data.logos.find(el => el.iso_639_1 = 'en').file_path;
+    }
     return (
         <MoviesContext.Provider value={{
             getTrendingMovies,
@@ -64,7 +68,8 @@ export const MoviesProvider = ({ children }) => {
             getSearchResults,
             getTvCast,
             getMoviesAndSortAndPaginate,
-            getSeuggestions
+            getSeuggestions,
+            getMovieLogo
         }}>
             {children}
         </MoviesContext.Provider>
