@@ -48,9 +48,29 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
         return res.data;
     }
+    const getTVAndSortAndPaginate = async (sortBy, page) => {
+        const res = await axios.get(`${base_url}/discover/tv?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
+        return res.data;
+    }
     const getSeuggestions = async (query) => {
         const res = await axios.get(`${base_url}/search/multi?api_key=${api_key}&query=${query}`);
         return res.data.results;
+    }
+    const getArabicMoviesAndSortAndPaginate = async (sortBy, page) => {
+        const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=ar&with_original_language=ar&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}`);
+        return res.data;
+    }
+    const getMiniSeriesWithSortAndPaginate = async (sortBy, page) => {
+        const res = await axios.get(`${base_url}/discover/tv?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&with_original_language=en`);
+        return res.data;
+    }
+    const getAnimationMoviesWithSortAndPaginate = async () => {
+        const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=en-US&sort_by=popularity.desc&include_adult=false&include_video=false&page=1&with_genres=16`);
+        return res.data;
+    }
+    const getLogoOfMovie = async (id) => {
+        const res = await axios.get(`${base_url}/movie/${id}/images?api_key=${api_key}`);
+        return res.data.logos;
     }
     return (
         <MoviesContext.Provider value={{
@@ -64,7 +84,12 @@ export const MoviesProvider = ({ children }) => {
             getSearchResults,
             getTvCast,
             getMoviesAndSortAndPaginate,
-            getSeuggestions
+            getSeuggestions,
+            getArabicMoviesAndSortAndPaginate,
+            getTVAndSortAndPaginate,
+            getMiniSeriesWithSortAndPaginate,
+            getAnimationMoviesWithSortAndPaginate,
+            getLogoOfMovie
         }}>
             {children}
         </MoviesContext.Provider>

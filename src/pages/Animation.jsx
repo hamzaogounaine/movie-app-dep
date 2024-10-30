@@ -8,12 +8,11 @@ import { ArrowLeft, ArrowRight, Film, Search, Star } from 'lucide-react'
 import { useMovies } from '../contexts/moviesContext/moviesContext'
 import SingleMovies from './details/SingleMovies'
 import { useAuth } from '../contexts/authContext/authContext'
-import { MoviesCarousel } from './details/MoviesCarousel'
 
 // Note: In a real application, you would store this in an environment variable
 
 
-export default function MovieBrowser() {
+export default function Animation() {
   const [movies, setMovies] = useState([])
   const [filteredMovies, setFilteredMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -22,7 +21,7 @@ export default function MovieBrowser() {
   const [error, setError] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const {getMoviesAndSortAndPaginate} = useMovies()
+  const {getAnimationMoviesWithSortAndPaginate} = useMovies()
   const {mode} = useAuth()
 
   useEffect(() => {
@@ -40,7 +39,7 @@ export default function MovieBrowser() {
     setIsLoading(true)
     setError(null)
     try {
-      const data = await getMoviesAndSortAndPaginate(sortBy, currentPage)
+      const data = await getAnimationMoviesWithSortAndPaginate(sortBy, currentPage)
       setMovies(data.results)
       setFilteredMovies(data.results)
       setTotalPages(data.total_pages)
@@ -89,9 +88,6 @@ export default function MovieBrowser() {
             <SelectItem value="release_date.asc">Release Date Ascending</SelectItem>
           </SelectContent>
         </Select>
-      </div>
-      <div className='p-10 h-screen'>
-      <MoviesCarousel movies={movies}/>
       </div>
       {isLoading ? (
         <div className="flex justify-center items-center h-64">

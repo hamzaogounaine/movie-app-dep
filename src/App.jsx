@@ -12,6 +12,10 @@ import Tv from './pages/details/Tv';
 import Actor from './pages/details/Actor';
 import SearchPage from './pages/search/Search';
 import MovieBrowser from './pages/Movies';
+import ArabicMovies from './pages/ArabicMovies';
+import TvBrowser from './pages/Tv';
+import MiniSeries from './pages/MiniSeries';
+import Animation from './pages/Animation';
 
 
 function App() {
@@ -29,6 +33,10 @@ function App() {
         <Route path="/actor/:id" element={<Actor />} />
         <Route path="/search/:query" element={<SearchPage />} />
         <Route path="/movies" element={<MovieBrowser />} />
+        <Route path="/tvseries" element={<TvBrowser />} />
+        <Route path="/ARmovies" element={<ArabicMovies />} />
+        <Route path="/mini-series" element={<MiniSeries />} />
+        <Route path="/animation" element={<Animation />} />
       </Routes>
       <Footer />
     </Router>

@@ -8,12 +8,12 @@ import { ArrowLeft, ArrowRight, Film, Search, Star } from 'lucide-react'
 import { useMovies } from '../contexts/moviesContext/moviesContext'
 import SingleMovies from './details/SingleMovies'
 import { useAuth } from '../contexts/authContext/authContext'
-import { MoviesCarousel } from './details/MoviesCarousel'
+import SingleTv from './details/SingleTv'
 
 // Note: In a real application, you would store this in an environment variable
 
 
-export default function MovieBrowser() {
+export default function TvBrowser() {
   const [movies, setMovies] = useState([])
   const [filteredMovies, setFilteredMovies] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
@@ -22,7 +22,7 @@ export default function MovieBrowser() {
   const [error, setError] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
   const [totalPages, setTotalPages] = useState(1)
-  const {getMoviesAndSortAndPaginate} = useMovies()
+  const {getTVAndSortAndPaginate} = useMovies()
   const {mode} = useAuth()
 
   useEffect(() => {
@@ -31,7 +31,7 @@ export default function MovieBrowser() {
 
   useEffect(() => {
     const filtered = movies.filter(movie =>
-      movie.title.toLowerCase().includes(searchTerm.toLowerCase())
+      movie.name.toLowerCase().includes(searchTerm.toLowerCase())
     )
     setFilteredMovies(filtered)
   }, [searchTerm, movies])
@@ -40,7 +40,7 @@ export default function MovieBrowser() {
     setIsLoading(true)
     setError(null)
     try {
-      const data = await getMoviesAndSortAndPaginate(sortBy, currentPage)
+      const data = await getTVAndSortAndPaginate(sortBy, currentPage)
       setMovies(data.results)
       setFilteredMovies(data.results)
       setTotalPages(data.total_pages)
@@ -64,7 +64,7 @@ export default function MovieBrowser() {
 
   return (
     <div className={`bg-background text-foreground mx-auto px-4 py-8 ${mode}`}>
-      <h1 className="text-4xl font-bold mb-8 text-center">TMDB Movie Browser</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">TV series Browser</h1>
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div className="relative w-full md:w-1/3">
           <Input
@@ -90,9 +90,6 @@ export default function MovieBrowser() {
           </SelectContent>
         </Select>
       </div>
-      <div className='p-10 h-screen'>
-      <MoviesCarousel movies={movies}/>
-      </div>
       {isLoading ? (
         <div className="flex justify-center items-center h-64">
           <Film className="animate-spin h-12 w-12 text-primary" />
@@ -105,7 +102,7 @@ export default function MovieBrowser() {
         <>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {filteredMovies && filteredMovies.map((movie) => (
-              <SingleMovies key={movie.id} movie={movie} />
+              <SingleTv key={movie.id} movie={movie} />
             ))}
           </div>
           <div className="flex justify-center items-center mt-8">
