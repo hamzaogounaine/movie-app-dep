@@ -22,17 +22,20 @@ export default function Navbar() {
   return (
     <header className={`sticky  top-0 z-50 w-full border-b bg-secondary  border-foreground ${mode}`}>
       <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-2" prefetch={false}>
+        <Link to="/" className="flex items-center gap-2">
           <img src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png" className="h-10 w-10" />
-         
+          <span className="sm:text-2xl text-secondary-foreground font-[poppins]">Fiml Guild</span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
           <Link
             to="/"
             className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-            prefetch={false}
+           
           >
+            <button>
+
             Home
+            </button>
           </Link>
           <DropdownMenu >
             <DropdownMenuTrigger asChild>
@@ -40,11 +43,13 @@ export default function Navbar() {
               >Movies</button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4 flex flex-col gap-1">
-              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>All movies</Link>
+              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">All movies</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/ARmovies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Arabic movies</Link>
+              <Link to="/top-rated-movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">Top rated movies</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/animation" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Animation movies</Link>
+              <Link to="/ARmovies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">Arabic movies</Link>
+              <hr className="border-gray-200 dark:border-gray-700" />
+              <Link to="/animation" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">Animation movies</Link>
             </DropdownMenuContent>
           </DropdownMenu>
           <DropdownMenu >
@@ -53,20 +58,23 @@ export default function Navbar() {
               >TV series</button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4 flex flex-col gap-1">
-              <Link to="/tvseries" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>All TV series</Link>
+              <Link to="/tvseries" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">All TV series</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/mini-series" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Mini series</Link>
+              <Link to="/top-rated-tv-shows" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">Top rated series</Link>
               <hr className="border-gray-200 dark:border-gray-700" />
-              <Link to="/movies" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>Top rated series</Link>
+              <Link to="/mini-series" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">Mini series</Link>
             </DropdownMenuContent>
           </DropdownMenu>
         
           <Link
             to="#"
             className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-            prefetch={false}
+           
           >
+            <button>
+
             Contact
+            </button>
           </Link>
         </nav>
         <div className="flex items-center gap-4 ">
@@ -93,18 +101,18 @@ export default function Navbar() {
             <DropdownMenuContent className="p-4">
                 {!user ? 
                 <div className="grid gap-4">
-                    <Link   to="/login" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>
+                    <Link   to="/login" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                         Login
                     </Link>
-                    <Link   to="/signup" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>
+                    <Link   to="/signup" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                         Sign Up
                     </Link>
                 </div>:
                 <div className="grid gap-4">
-                    <Link   to="/profile" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>
+                    <Link   to="/profile" className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                         Profile
                     </Link>
-                    <button   onClick={() => logout()} className="flex gap-2 items-center text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50" prefetch={false}>
+                    <button   onClick={() => logout()} className="flex gap-2 items-center text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                         <LogOutIcon className="w-4 h-4"/>
                         Logout
                     </button>
@@ -129,28 +137,28 @@ export default function Navbar() {
                 <Link
                   to="#"
                   className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  prefetch={false}
+                 
                 >
                   Home
                 </Link>
                 <Link
                   to="#"
                   className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  prefetch={false}
+                 
                 >
                   About
                 </Link>
                 <Link
                   to="#"
                   className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  prefetch={false}
+                 
                 >
                   Services
                 </Link>
                 <Link
                   to="#"
                   className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                  prefetch={false}
+                 
                 >
                   Contact
                 </Link>

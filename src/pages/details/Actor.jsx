@@ -8,21 +8,24 @@ import { Input } from "@/components/ui/input"
 
 import { ArrowUp, Loader, SearchIcon } from 'lucide-react'
 import SingleMovies from './SingleMovies'
+import SingleTv from './SingleTv'
 const Actor = () => {
     const [movies , setMovies] = useState([])
     const [loading , setLoading] = useState(true)
-    const {getMoviesOfActor, getActorNameById} = useMovies()
+    const {getWorksOfActor, getActorNameById} = useMovies()
     const [actorName , setActorName] = useState('')
     const [search , setSearch] = useState('')
     const {id} = useParams()
+    const [tvShows , setTvShows] = useState([])
     const [reset , setReset] = useState(false)
     useEffect(() => {
       setLoading(true)
        const fetchMovies = async () => {
-        const res = await getMoviesOfActor(id)
+        const res = await getWorksOfActor(id)
         const name = await getActorNameById(id)
         setActorName(name)
-        setMovies(res)
+        setMovies(res.movies)
+        setTvShows(res.tvShows)
         setLoading(false)
        }
        fetchMovies()
@@ -38,10 +41,10 @@ const Actor = () => {
       {loading && <div className='flex justify-center min-h-screen w-full items-center bg-background'><Loader className='animate-spin text-foreground'/></div>}
       {!movies.length && <div className='flex justify-center min-h-screen w-full items-center bg-background'><p className='text-foreground'>No Movies Found</p></div>}
       {!loading && 
-        <div className={` px-6 bg-secondary  mx-auto py-10`}>
+        <div className={` px-6 bg-background  mx-auto py-10`}>
           <div className='sm:flex justify-evenly'>
             {movies.length && actorName && 
-          <h1 className="text-4xl font-bold mb-8 text-center text-foreground">{actorName}'s Movies</h1>
+          <h1 className="text-4xl font-bold mb-8 text-center text-foreground underline">{actorName}'s Movies</h1>
           }
           <div className="relative bg-background h-fit sm:w-1/3 max-sm:my-2">
                 <SearchIcon  className="cursor-pointer absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
@@ -50,9 +53,18 @@ const Actor = () => {
               </div>
           </div>
 
+            <h1 className='text-foreground my-3 text-2xl font-bold font-poppins underline'>Movies</h1>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {movies && movies.map((movie) => (
                 <SingleMovies key={movie.id} movie={movie} />
+            ))}
+            </div>
+            <hr className="my-8 border-t-2 border-foreground" />
+            <h1 className='text-foreground my-3 text-2xl font-bold font-poppins underline'>Tv Shows</h1>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+
+            {tvShows.length && tvShows.map((tvShow) => (
+                <SingleTv key={tvShow.id} movie={tvShow} />
             ))}
           </div>
           <Button

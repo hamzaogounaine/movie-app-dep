@@ -16,6 +16,9 @@ import ArabicMovies from './pages/ArabicMovies';
 import TvBrowser from './pages/Tv';
 import MiniSeries from './pages/MiniSeries';
 import Animation from './pages/Animation';
+import TopRatedMovies from './pages/TopRatedMovies';
+import TopRatedTvShows from './pages/TopTvSeries';
+import Genre from './pages/Genre';
 
 
 function App() {
@@ -32,9 +35,12 @@ function App() {
         <Route path="/tv/:id" element={<Tv />} />
         <Route path="/actor/:id" element={<Actor />} />
         <Route path="/search/:query" element={<SearchPage />} />
-        <Route path="/movies" element={<MovieBrowser />} />
         <Route path="/tvseries" element={<TvBrowser />} />
+        <Route path="/movies" element={<MovieBrowser />} />
+        <Route path="/top-rated-movies" element={<TopRatedMovies />} />
+        <Route path="/top-rated-tv-shows" element={<TopRatedTvShows />} />
         <Route path="/ARmovies" element={<ArabicMovies />} />
+        <Route path="/genre/:id" element={<Genre />} />
         <Route path="/mini-series" element={<MiniSeries />} />
         <Route path="/animation" element={<Animation />} />
       </Routes>
