@@ -1,5 +1,5 @@
 import { db } from './firebase'
-import { addDoc, collection, doc, getDoc, setDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
 
 export const useFirestore = () => {
 
@@ -22,14 +22,30 @@ export const useFirestore = () => {
             return false
         }
     }
-    const getWatchList = async (userId, colName) => {
-        const docRef = doc(db, "users", userId, 'watchlist', userId, colName)
-        const docSnap = await getDoc(docRef)
-        if (docSnap.exists()) {
-            return docSnap.data()
-        } else {
-            return false
+    const getWatchList = async (userId) => {
+        const moviesCollectionRef = collection(db, "users", userId, "watchlist", userId, "movies");
+        const tvShowsCollectionRef = collection(db, "users", userId, "watchlist", userId, "tvshows");
+      
+        try {
+          // Get all documents in "movies"
+          const moviesSnapshot = await getDocs(moviesCollectionRef);
+          const movies = moviesSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+      
+          // Get all documents in "tvshows"
+          const tvShowsSnapshot = await getDocs(tvShowsCollectionRef);
+          const tvShows = tvShowsSnapshot.docs.map(doc => ({
+            id: doc.id,
+            ...doc.data(),
+          }));
+      
+          return { movies, tvShows };
+        } catch (error) {
+          console.error("Error fetching watchlist data:", error);
         }
+
     }
     return { addToWatchList, checkIfInWatchList , getWatchList }
 }

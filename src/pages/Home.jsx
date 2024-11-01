@@ -87,7 +87,7 @@ const Home = () => {
     const fetchWatchList = async () => {
 
       if (user) {
-        await getWatchList(user.uid, 'movies').then(data => console.log(data));
+        await getWatchList(user && user.uid.toString(), 'movies').then(data => console.log(data));
       }
     }
     fetchWatchList()
