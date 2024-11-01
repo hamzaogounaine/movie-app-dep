@@ -19,6 +19,7 @@ import Animation from './pages/Animation';
 import TopRatedMovies from './pages/TopRatedMovies';
 import TopRatedTvShows from './pages/TopTvSeries';
 import Genre from './pages/Genre';
+import Watchlist from './pages/Watchlist';
 
 
 function App() {
@@ -43,6 +44,7 @@ function App() {
         <Route path="/genre/:id" element={<Genre />} />
         <Route path="/mini-series" element={<MiniSeries />} />
         <Route path="/animation" element={<Animation />} />
+        <Route path="/watchlist" element={<Watchlist />} />
       </Routes>
       <Footer />
     </Router>

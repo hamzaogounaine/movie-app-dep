@@ -54,7 +54,7 @@
   
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border transition-colors;
     font-family: 'Clash Display', sans-serif;
     letter-spacing: 1.5;
 

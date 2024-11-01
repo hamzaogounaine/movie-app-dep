@@ -48,12 +48,13 @@ export default function Movie() {
   }, [getMovieCast, getMovieTrailers, id, isInWatchList])
 
   useEffect(() => {
-    const checkAvailabilty = async () =>{
-      const checkres = await checkIfInWatchList(user.uid, id)
+    const checkAvailabilty = async () => {
+      const checkres = await checkIfInWatchList(user.uid && user.uid, id , 'movies')
+      console.log(checkres)
       setIsInWatchList(checkres)
-      }
+    }
     checkAvailabilty()
-  }, [isInWatchList, clicked])
+  }, [isInWatchList ,clicked ])
 
   const handleAddToWatchlist = async () => {
     if (!user) {
