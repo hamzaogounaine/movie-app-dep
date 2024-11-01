@@ -1,5 +1,5 @@
 import { db } from './firebase'
-import { addDoc, collection, doc, getDoc, getDocs, setDoc } from 'firebase/firestore'
+import { addDoc, collection, doc, getDoc, getDocs, setDoc, deleteDoc } from 'firebase/firestore'
 
 export const useFirestore = () => {
 
@@ -46,6 +46,16 @@ export const useFirestore = () => {
           console.error("Error fetching watchlist data:", error);
         }
 
+        
     }
-    return { addToWatchList, checkIfInWatchList , getWatchList }
+    
+    const removeFromWatchList = async (userId, collName, dataId) => {
+        try {
+            await deleteDoc(doc(db, "users", userId, 'watchlist', userId, collName, dataId.toString()))
+        } catch (error) {
+            console.log('error', error)
+        }
+    }
+    
+    return { addToWatchList, checkIfInWatchList , getWatchList , removeFromWatchList }
 }
