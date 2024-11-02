@@ -16,3 +16,9 @@ MoviesApp is a sleek and powerful platform designed for discovering, managing, a
 1. Sign Up & Login: Create an account or log in to access personalized features like the watchlist.
 2. Add Movies to Watchlist: Browse movies and add them to your watchlist for future viewing.
 3. Dark Mode Toggle: Switch between light and dark themes using the toggle for a personalized experience.
+
+## Screenshots 
+![image](https://github.com/user-attachments/assets/246f1878-2746-4bb4-ac6b-346e4ae02948)
+![image](https://github.com/user-attachments/assets/2abdf39f-b75a-438f-bda7-ca9bd4b6e41a)
+![image](https://github.com/user-attachments/assets/6992a128-cd5b-4239-b1f0-4fa87037fcc3)
+
