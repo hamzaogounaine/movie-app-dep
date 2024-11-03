@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Star, Calendar, Loader, PlusCircle, Clock } from 'lucide-react'
 import { useMovies } from '../../contexts/moviesContext/moviesContext'
 import { Button } from "@/components/ui/button"
@@ -85,6 +85,7 @@ export default function Movie() {
 
   return (
     <div className={`${mode} min-h-screen bg-background text-foreground`}>
+    
       
       {/* Backdrop */}
 
@@ -183,6 +184,11 @@ export default function Movie() {
               </div>
             </div>
           </div>
+        </div>
+        <div className='w-full mt-7'>
+                <Link to={`/movie/watch/${movie.id}`}> 
+            <button className='w-full border-foreground bg-gradient-to-r from-purple-700 via-pink-500 to-red-500 text-primary-foreground hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-600 hover:to-red-600 text-white rounded py-2' >Watch now</button>
+            </Link>
         </div>
       </div>
 

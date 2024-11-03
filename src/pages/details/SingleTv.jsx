@@ -40,7 +40,7 @@ const SingleTv = ({ movie , watchlist}) => {
         <Card className="flex flex-col bg-secondary text-foreground">
           <CardHeader>
             <CardTitle className="text-lg font-bold flex justify-between items-center">
-              <Link to={`/${movie.media_type || 'movie'}/${movie.id}`} key={movie.id}>
+              <Link to={`/${movie.media_type || 'tv'}/${movie.id}`} key={movie.id}>
                 {movie.title || movie.name}
               </Link>
               {!watchlist && (
