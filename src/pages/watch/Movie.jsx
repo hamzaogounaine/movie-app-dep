@@ -5,7 +5,7 @@ import { useAuth } from '../../contexts/authContext/authContext'
 import { Loader } from 'lucide-react'
 
 const MovieWatch = () => {
-    const [base_url , setBaseUrl] = useState('https://embed.su/embed/movie')
+    const [base_url , setBaseUrl] = useState('https://vidsrc.me/embed/movie')
     const { id } = useParams()
     const { mode } = useAuth()
     const [service, setService] = React.useState(null)

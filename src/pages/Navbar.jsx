@@ -15,6 +15,7 @@ import { Toggle } from "@/components/ui/toggle";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import {
   ArrowUpToLine,
+  ChevronDownIcon,
   List,
   LogOutIcon,
   MenuIcon,
@@ -33,7 +34,7 @@ import { useFirestore } from "../firebase/firestore";
 export default function Navbar() {
   const { user, toggleMode, mode } = useAuth();
   const [watchlistItems, setWatchlistItems] = useState([]);
-  const {getWatchList} = useFirestore();
+  const { getWatchList } = useFirestore();
   useEffect(() => {
     const fetchWatchList = async () => {
 
@@ -50,13 +51,13 @@ export default function Navbar() {
 
   return (
     <header className={`sticky top-0 z-50 w-full bg-opacity-10 backdrop-blur-md bg-secondary border-b border-foreground ${mode}`}>
-    <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6 backdrop-blur-md">
-     <Link to="/" className="flex items-center gap-2">
+      <div className="container mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6 backdrop-blur-md">
+        <Link to="/" className="flex items-center gap-2">
           <img
             src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png"
             className="h-10 w-10"
           />
-          <span className="sm:text-2xl text-secondary-foreground font-[poppins]">
+          <span className="sm:text-xl text-secondary-foreground font-[poppins]">
             Fiml Guild
           </span>
         </Link>
@@ -69,8 +70,9 @@ export default function Navbar() {
           </Link>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
+              <button className="flex  items-center gap-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                 Movies
+                <ChevronDownIcon className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4 flex flex-col gap-1">
@@ -105,8 +107,9 @@ export default function Navbar() {
           </DropdownMenu>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <button className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
+              <button className="flex  items-center gap-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
                 TV series
+                <ChevronDownIcon className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4 flex flex-col gap-1">
