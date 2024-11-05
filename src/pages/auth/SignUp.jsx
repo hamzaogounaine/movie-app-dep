@@ -22,7 +22,7 @@ export default function Signup() {
     e.preventDefault();
     setIsLoading(true);
     try {
-      await signUp(email, password).then(() => navigate("/")).catch(error => setError(error.message));
+      await signUp(email, password).then(() => navigate("/")).catch(error => setError(error.message.replace('Firebase: ','')));
       ;
     } catch (error) {
       console.error(error);
@@ -30,7 +30,7 @@ export default function Signup() {
     setIsLoading(false);
   }
   const googleSignIn = async () => {
-    await signInWithGoogle().catch((error) => { setError(error.message) });
+    await signInWithGoogle().catch((error) => { setError(error.message.replace('Firebase: ','')) });
   }
   const { mode } = useAuth();
   return (

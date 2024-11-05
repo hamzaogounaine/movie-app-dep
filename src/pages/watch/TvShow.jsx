@@ -54,7 +54,7 @@ const TvWatch = () => {
         if (value === '2embed.cc') {
             setBaseUrl('https://www.2embed.cc/embedtv');
         }
-       
+
     }
     const handleSeasonChange = (value) => {
         navigate(`/tv/watch/${id}/${value}/1`)
@@ -62,11 +62,11 @@ const TvWatch = () => {
     return (
         <div className={`${mode} bg-secondary text-foreground max-sm:px-4 px-3`} >
             <div className='flex justify-center items-center rounded'>
-                <div className='absolute text-center'>
-                    <Loader className='animate-spin text-foreground' /> please wait
+                <div className='absolute text-center flex justify-center items-center flex-col'>
+                    <Loader className='animate-spin text-foreground' /><span>please wait</span>
                 </div>
                 <iframe
-                    src={base_url.includes('2embed.cc') ? `${base_url}/${id}&s=${season}&e=${episode}` :`${base_url}/${id}/${parseInt(season)}/${parseInt(episode)}`}
+                    src={base_url.includes('2embed.cc') ? `${base_url}/${id}&s=${season}&e=${episode}` : `${base_url}/${id}/${parseInt(season)}/${parseInt(episode)}`}
                     allowFullScreen
                     scrolling="no"
                     width="100%"
@@ -128,6 +128,13 @@ const TvWatch = () => {
                     ))}
                     <ScrollBar orientation="vertical" className="bg-foreground rounded" />
                 </ScrollArea>
+            </div>
+            <div className='mt-4'>
+
+            <span className='text-lg mt-10'>Note:</span>
+            <p> 
+                If the video does not play, try changing the server.
+            </p>
             </div>
         </div>
     )

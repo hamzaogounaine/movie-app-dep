@@ -115,7 +115,7 @@ export default function Movie() {
           {/* Info */}
           <div className="flex-grow">
             <div className="flex items-center justify-between mb-4">
-              <h1 className="text-4xl font-bold">{movie.title}</h1>
+              <h1 className="sm:text-4xl text-2xl font-bold">{movie.title}</h1>
               {user && isInWatchList ? (
                 <Button
                 
@@ -133,7 +133,7 @@ export default function Movie() {
               </Button>
             )}
             </div>
-            <p className="text-xl text-muted-foreground mb-4">{movie.original_title}</p>
+            <p className="sm:text-xl  text-muted-foreground mb-4">{movie.original_title}</p>
 
             <div className="flex items-center space-x-4 mb-4">
               <div className="flex items-center">

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Loader } from "lucide-react";
 import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import MediaListSkeleton from './MediaListSkeleton';
 
 const MediaList = ({ title, media, genres, posterBase, icon: Icon }) => {
   return (
@@ -11,10 +12,7 @@ const MediaList = ({ title, media, genres, posterBase, icon: Icon }) => {
       <ScrollArea className="w-full h-full whitespace-nowrap rounded-md">
         <div className="flex h-full space-x-4 p-4">
           {!media && (
-            <div className='h-[300px] flex justify-center items-center w-full border rounded-md flex-col'>
-              <Loader className='animate-spin' />
-              <p>Fetching...</p>
-            </div>
+            <MediaListSkeleton />
           )}
           {media && media.map((item, i) => (
             <Link to={`/${item.media_type || 'movie'}/${item.id}`} key={i} className="relative group w-[200px] overflow-hidden h-full rounded-lg shadow-lg transition-transform transform hover:scale-105">

@@ -97,7 +97,7 @@ export default function Navbar() {
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
-                TV series
+                Tv shows
                 <ChevronDownIcon className="h-4 w-4" />
               </button>
             </DropdownMenuTrigger>
@@ -106,7 +106,7 @@ export default function Navbar() {
                 to="/tvseries"
                 className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
               >
-                All TV series
+                All Tv shows
               </Link>
               <hr className="border-gray-200 dark:border-gray-700" />
               <Link
@@ -129,9 +129,9 @@ export default function Navbar() {
           
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
-              <Button variant="ghost" size="icon" className="rounded-full">
-                <User2 className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-              </Button>
+              
+                <User2 className="cursor-pointer h-5 w-5 m-2 text-gray-500 dark:text-gray-400" />
+              
             </DropdownMenuTrigger>
             <DropdownMenuContent className="p-4">
               {!user ? (
@@ -224,7 +224,6 @@ export default function Navbar() {
                       >
                         Top rated movies
                       </Link>
-                      <hr className="border-gray-200 dark:border-gray-700" />
                     
 
                       <hr className="border-gray-200 dark:border-gray-700" />
@@ -238,14 +237,14 @@ export default function Navbar() {
                   </AccordionItem>
                   <AccordionItem value="tvseries">
                     <AccordionTrigger className="flex items-center gap-1 text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50">
-                      TV series
+                      Tv shows
                     </AccordionTrigger>
                     <AccordionContent className="p-4 flex flex-col gap-1">
                       <Link
                         to="/tvseries"
                         className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
                       >
-                        All TV series
+                        All Tv shows
                       </Link>
                       <hr className="border-gray-200 dark:border-gray-700" />
                       <Link

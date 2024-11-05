@@ -42,10 +42,10 @@ const MovieWatch = () => {
 
     }
     return (
-        <div className={`${mode} bg-secondary text-foreground px-10`} >
+        <div className={`${mode} bg-secondary text-foreground px-10 min-h-[90vh]`} >
             <div className='flex justify-center items-center rounded'>
-                <div className='absolute text-center'>
-                    <Loader className='animate-spin text-foreground' /> please wait
+                <div className='absolute text-center flex justify-center items-center flex-col'>
+                    <Loader className='animate-spin text-foreground' /><span>please wait</span> 
                 </div>
                 <iframe
                     src={`${base_url}/${id}`}
@@ -75,6 +75,10 @@ const MovieWatch = () => {
                     </SelectContent>
                 </Select>
             </div>
+            <span className='text-lg'>Note:</span>
+            <p> 
+                If the video does not play, try changing the server.
+            </p>
         </div>
     )
 }

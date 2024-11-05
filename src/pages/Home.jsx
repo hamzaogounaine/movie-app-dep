@@ -15,6 +15,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { useFirestore } from '../firebase/firestore';
+import MediaListSkeleton from './details/MediaListSkeleton';
 
 const Home = () => {
   
@@ -50,11 +51,7 @@ const Home = () => {
   const [suggestions, setSuggestions] = useState([]);
   const [randomBg, setRandomBg] = useState(0);
   const { getWatchList } = useFirestore()
-  useEffect(() => {
-    if (!isAuthenticated) {
-      navigate("/login");
-    }
-  }, [isAuthenticated, navigate]);
+
 
   const { getTrendingMovies, getTrendingMoviesByGenre, getSeuggestions } = useMovies();
 
@@ -113,7 +110,7 @@ const Home = () => {
               </div>
               <div className="w-full max-w-md space-y-2">
                 <div className="flex space-x-2 relative">
-                  <Input value={search} onChange={(e) => setSearch(e.target.value)} className="max-w-[300px] h-10 flex-1 text-white border-white rounded-lg shadow-md" placeholder="Search movies..." type="search" />
+                  <Input value={search} onChange={(e) => setSearch(e.target.value)} className="max-w-[300px] h-10 flex-1 text-white border-white rounded-lg shadow-md" placeholder="Search movies or tvshows..." type="search" />
                   <div className='absolute z-50 -left-2 top-10 text-foreground text-left bg-background w-[300px] rounded-lg shadow-lg'>
                     <ScrollArea className='max-h-40 whitespace-nowrap flex flex-col'>
                       {suggestions && suggestions.map((suggestion) => (
@@ -150,7 +147,7 @@ const Home = () => {
           </div>
         </section>
         <section className="w-full bg-background sm:p-4">
-
+          
           <MediaList title="Trending Now" media={trending} genres={genres} posterBase={poster_base} icon={TrendingUp} />
           <MediaList title="Science Fiction" media={ScFi} genres={genres} posterBase={poster_base} icon={Tv} />
           <MediaList title="Action" media={action} genres={genres} posterBase={poster_base} icon={Clock} />

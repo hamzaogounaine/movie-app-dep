@@ -14,7 +14,7 @@ const Login = () => {
   const [error, setError] = useState(null);
   const navigate = useNavigate();
   const handleSubmit = async () => {
-    await signIn(email, password).catch((error) => {setError(error.message)});
+    await signIn(email, password).catch((error) => {setError(error.message.replace('Firebase: ',''))});
   }
 
   const {isAuthenticated} = useAuth();
@@ -25,7 +25,7 @@ const Login = () => {
   },[isAuthenticated])
 
   const googleSignIn = async () => {
-    await signInWithGoogle().catch((error) => {setError(error.message)});
+    await signInWithGoogle().catch((error) => {setError(error.message.replace('Firebase: ',''))});
   }
   const {mode} = useAuth();
 return (

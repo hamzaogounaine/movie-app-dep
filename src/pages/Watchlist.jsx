@@ -15,6 +15,7 @@ const Watchlist = () => {
     const { user, mode} = useAuth();
     const { getWatchList } = useFirestore();
     const { getMovieById, getTvById } = useMovies();
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchWatchlist = async () => {
@@ -24,6 +25,7 @@ const Watchlist = () => {
             // Fetch movie details
             const movieDetails = await Promise.all(movies.map(async (movie) => {
                 const movieDetail = await getMovieById(movie.id);
+                setLoading(false);
                 return movieDetail;
             }));
             setMovies(movieDetails);
@@ -31,6 +33,7 @@ const Watchlist = () => {
             // Fetch TV show details
             const tvShowDetails = await Promise.all(tvShows.map(async (tvShow) => {
                 const tvShowDetail = await getTvById(tvShow.id);
+                setLoading(false);
                 return tvShowDetail;
             }));
             setTvShows(tvShowDetails);
@@ -48,6 +51,11 @@ const Watchlist = () => {
                     <h1 className="text-3xl font-bold mb-2">My Watchlist</h1>
                     <p className="text-muted-foreground">Keep track of movies and shows you want to watch</p>
                 </header>
+                {loading && (
+                    <div className="flex min-h-screen    justify-center items-center h-96">
+                        <p className="text-foreground">Loading...</p>
+                    </div>
+                )}
                 {watchlistItems.length === 0 ? (
                     <div className="flex justify-center items-center h-96">
                         <p className="text-foreground">No items in your watchlist</p>

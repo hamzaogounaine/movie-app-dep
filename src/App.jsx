@@ -22,6 +22,7 @@ import Watchlist from './pages/Watchlist';
 import MovieWatch from './pages/watch/Movie';
 import TvWatch from './pages/watch/TvShow';
 import NotFound from './pages/NotFound';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 
 function App() {
@@ -49,6 +50,7 @@ function App() {
         <Route path="/movie/watch/:id" element={<MovieWatch />} />
         <Route path="/tv/watch/:id" element={<TvWatch />} />
         <Route path="/tv/watch/:id/:season/:episode" element={<TvWatch />} />
+        <Route path="/privacy-policy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
