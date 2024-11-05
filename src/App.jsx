@@ -12,7 +12,6 @@ import Tv from './pages/details/Tv';
 import Actor from './pages/details/Actor';
 import SearchPage from './pages/search/Search';
 import MovieBrowser from './pages/Movies';
-import ArabicMovies from './pages/ArabicMovies';
 import TvBrowser from './pages/Tv';
 import MiniSeries from './pages/MiniSeries';
 import Animation from './pages/Animation';
@@ -22,6 +21,7 @@ import Genre from './pages/Genre';
 import Watchlist from './pages/Watchlist';
 import MovieWatch from './pages/watch/Movie';
 import TvWatch from './pages/watch/TvShow';
+import NotFound from './pages/NotFound';
 
 
 function App() {
@@ -42,7 +42,6 @@ function App() {
         <Route path="/movies" element={<MovieBrowser />} />
         <Route path="/top-rated-movies" element={<TopRatedMovies />} />
         <Route path="/top-rated-tv-shows" element={<TopRatedTvShows />} />
-        <Route path="/ARmovies" element={<ArabicMovies />} />
         <Route path="/genre/:id" element={<Genre />} />
         <Route path="/mini-series" element={<MiniSeries />} />
         <Route path="/animation" element={<Animation />} />
@@ -50,6 +49,7 @@ function App() {
         <Route path="/movie/watch/:id" element={<MovieWatch />} />
         <Route path="/tv/watch/:id" element={<TvWatch />} />
         <Route path="/tv/watch/:id/:season/:episode" element={<TvWatch />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </Router>

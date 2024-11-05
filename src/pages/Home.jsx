@@ -17,6 +17,7 @@ import {
 import { useFirestore } from '../firebase/firestore';
 
 const Home = () => {
+  
   const { isAuthenticated, user, mode } = useAuth();
   const [trending, setTrending] = useState();
   const [ScFi, setScFi] = useState();
@@ -99,7 +100,7 @@ const Home = () => {
   return (
     <div className={`bg-background min-h-screen text-foreground ${mode}`}>
       <main className="flex-1">
-        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-cover bg-center" style={{ backgroundImage: `url(${poster_base}${trending && trending[randomBg] && trending[randomBg].backdrop_path})`, backgroundBlendMode: 'overlay', backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
+        <section className="w-full py-12 md:py-24 lg:py-32 xl:py-48 bg-cover bg-center" title={trending && trending[randomBg] && (trending[randomBg].title || trending[randomBg].name)} style={{ backgroundImage: `url(${trending && trending[randomBg] && trending[randomBg].backdrop_path ? `${poster_base}${trending[randomBg].backdrop_path}` : ''})`, backgroundBlendMode: 'overlay', backgroundColor: 'rgba(0, 0, 0, 0.7)' }}>
           <div className="bg-black bg-opacity-5 max-sm:bg-opacity-15 px-4 md:px-6">
             <div className="flex flex-col items-center space-y-4 text-center">
               <div className="space-y-2">
