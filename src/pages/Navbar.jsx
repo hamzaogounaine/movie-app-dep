@@ -51,8 +51,8 @@ export default function Navbar() {
             src="https://cdn-icons-png.flaticon.com/512/2503/2503508.png"
             className="h-10 w-10"
           />
-          <span className="sm:text-xl text-secondary-foreground font-[poppins]">
-            Film Guild
+          <span className="sm:text-xl font-bold text-secondary-foreground font-[poppins]">
+            FILM GUILD
           </span>
         </Link>
         <nav className="hidden items-center gap-6 text-sm font-medium md:flex">
