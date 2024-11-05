@@ -16,6 +16,7 @@ import {
   SearchIcon,
   SunIcon,
   Tv,
+  TvMinimalPlayIcon,
   User2,
 } from "lucide-react";
 import { useAuth } from "../contexts/authContext/authContext";
@@ -83,13 +84,7 @@ export default function Navbar() {
               >
                 Top rated movies
               </Link>
-              <hr className="border-gray-200 dark:border-gray-700" />
-              <Link
-                to="/ARmovies"
-                className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-              >
-                Arabic movies
-              </Link>
+           
               <hr className="border-gray-200 dark:border-gray-700" />
               <Link
                 to="/animation"
@@ -131,24 +126,7 @@ export default function Navbar() {
           </DropdownMenu>
         </nav>
         <div className="flex items-center gap-4">
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild className="max-sm:hidden">
-              <Button variant="ghost" size="icon" className="rounded-full">
-                <SearchIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
-                <span className="sr-only">Search</span>
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent className={`w-[300px] p-4 bg-background ${mode}`}>
-              <div className="relative bg-background">
-                <SearchIcon className="absolute left-2.5 top-2.5 h-4 w-4 text-gray-500 dark:text-gray-400" />
-                <Input
-                  type="search"
-                  placeholder="Search..."
-                  className="pl-8 w-full bg-background"
-                />
-              </div>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <Button variant="ghost" size="icon" className="rounded-full">
@@ -194,8 +172,8 @@ export default function Navbar() {
             to="/watchlist"
             className="text-sm relative font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
           >
-            <Tv className="w-5 h-5" />
-            <span className="absolute bg-red-500 font-[poppins] h-3 w-3 -top-2 rounded-full flex items-center justify-center -right-2 text-xs text-white">{watchlistItems.length}</span>
+            <TvMinimalPlayIcon className="w-5 h-5" />
+            <span className="absolute bg-red-500 font-[poppins] h-4 w-4 -top-2 rounded-full flex items-center justify-center -right-2 text-xs text-white">{watchlistItems.length}</span>
           </Link>
           <Toggle
             aria-label="Toggle mode"
@@ -213,9 +191,9 @@ export default function Navbar() {
               <Button
                 variant="ghost"
                 size="icon"
-                className="rounded-full md:hidden"
+                className="rounded-full md:hidden "
               >
-                <MenuIcon className="h-5 w-5 text-gray-500 dark:text-gray-400" />
+                <MenuIcon className="h-6 w-6 text-gray-500 dark:text-gray-400" />
                 <span className="sr-only">Toggle navigation menu</span>
               </Button>
             </SheetTrigger>
@@ -247,12 +225,8 @@ export default function Navbar() {
                         Top rated movies
                       </Link>
                       <hr className="border-gray-200 dark:border-gray-700" />
-                      <Link
-                        to="/ARmovies"
-                        className="text-sm font-medium text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-50"
-                      >
-                        Arabic movies
-                      </Link>
+                    
+
                       <hr className="border-gray-200 dark:border-gray-700" />
                       <Link
                         to="/animation"

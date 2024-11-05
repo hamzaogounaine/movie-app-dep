@@ -36,7 +36,7 @@ export function MoviesCarousel({ movies }) {
                 <p className="text-secondary-foreground font-[poppins] text-lg">{movie.overview.length > 100 ? `${movie.overview.slice(0, 100)}...` : movie.overview}</p>
                 <div className="flex justify-start w-full mt-4 gap-4">
 
-                <button className='rounded-md font-bold bg-foreground hover:scale-105 transition-all flex gap-1 float-start p-2 text-background items-center min-w-32 justify-center'><PlayIcon className="fill-background w-6 h-6" />Play</button>
+                <button className='rounded-md font-bold bg-foreground hover:scale-105 transition-all flex gap-1 float-start p-2 text-background items-center min-w-32 justify-center'><PlayIcon className="fill-background w-6 h-6" /><Link to={`/movie/watch/${movie.id}`}>Play</Link></button>
                 <Link to={`/movie/${movie.id}`} className='rounded-md font-bold bg-transparent border-2 border-foreground flex gap-1 float-start p-3 hover:scale-105 transition-all min-w-40 justify-center text-foreground items-center'><Info className="text-foreground w-6 h-6" />See more</Link>
                 </div>
               </div>
