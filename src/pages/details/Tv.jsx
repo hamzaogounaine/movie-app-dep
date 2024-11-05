@@ -19,7 +19,7 @@ import { useFirestore } from '../../firebase/firestore';
 const Tv = () => {
   const { id } = useParams();
   const [movie, setMovie] = useState();
-  const { getTvById, getTvCast ,getTvTrailers} = useMovies();
+  const { getTvById, getTvCast, getTvTrailers } = useMovies();
   const [cast, setCast] = useState([]);
   const [trailers, setTrailers] = useState([]);
   const { toast } = useToast()
@@ -43,12 +43,12 @@ const Tv = () => {
 
   useEffect(() => {
     const checkAvailabilty = async () => {
-      const checkres = await checkIfInWatchList(user.uid && user.uid, id , 'tvshows')
+      const checkres = await checkIfInWatchList(user.uid && user.uid, id, 'tvshows')
       console.log(checkres)
       setIsInWatchList(checkres)
     }
     checkAvailabilty()
-  }, [isInWatchList ,clicked ])
+  }, [isInWatchList, clicked])
 
   const handleAddToWatchlist = async () => {
     if (!user) {
@@ -63,7 +63,7 @@ const Tv = () => {
       added_at: Date.now(),
       type: 'tvshow'
     }
-    await addToWatchList(user.uid,'tvshows', data.id, data)
+    await addToWatchList(user.uid, 'tvshows', data.id, data)
     console.log(
 
     )
@@ -110,18 +110,18 @@ const Tv = () => {
 
                   {user && isInWatchList ? (
                     <Button
-                    className="bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
-                    <Clock className="mr-2 h-4 w-4" /> Already in Watchlist
-                  </Button>
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
+                      <Clock className="mr-2 h-4 w-4" /> Already in Watchlist
+                    </Button>
                   ) : (
-                  <Button
-                    onClick={(movie) => {handleAddToWatchlist(movie); setTimeout(() => setClicked(true), 1000)}}
-                    className="bg-primary text-primary-foreground hover:bg-primary/90"
-                  >
-                    <PlusCircle className="mr-2 h-4 w-4" /> Add to Watchlist
-                  </Button>
-                )}
+                    <Button
+                      onClick={(movie) => { handleAddToWatchlist(movie); setTimeout(() => setClicked(true), 1000) }}
+                      className="bg-primary text-primary-foreground hover:bg-primary/90"
+                    >
+                      <PlusCircle className="mr-2 h-4 w-4" /> Add to Watchlist
+                    </Button>
+                  )}
                 </div>
                 <p className="text-xl text-muted-foreground mb-4">{movie.original_name}</p>
 
@@ -164,6 +164,11 @@ const Tv = () => {
                   </div>
                 </div>
               </div>
+            </div>
+            <div className='w-full mt-7'>
+              <Link to={`/tv/watch/${movie.id}/1/1`}>
+                <button className='w-full border-foreground bg-gradient-to-r from-purple-700 via-pink-500 to-red-500 text-primary-foreground hover:bg-gradient-to-r hover:from-purple-500 hover:via-pink-600 hover:to-red-600 text-white rounded py-2' >Watch now</button>
+              </Link>
             </div>
           </div>
 

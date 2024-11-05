@@ -148,7 +148,7 @@ const Home = () => {
             </div>
           </div>
         </section>
-        <section className="w-full bg-background">
+        <section className="w-full bg-background sm:p-4">
 
           <MediaList title="Trending Now" media={trending} genres={genres} posterBase={poster_base} icon={TrendingUp} />
           <MediaList title="Science Fiction" media={ScFi} genres={genres} posterBase={poster_base} icon={Tv} />

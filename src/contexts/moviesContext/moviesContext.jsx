@@ -98,6 +98,14 @@ export const MoviesProvider = ({ children }) => {
         const res = await axios.get(`${base_url}/discover/movie?api_key=${api_key}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&page=${page}&with_genres=${id}`);
         return res.data;
     }
+    const getTvShowSeasons = async (id) => {
+        const res = await axios.get(`${base_url}/tv/${id}?api_key=${api_key}`);
+        return res.data.seasons;
+    }
+    const getTvShowEpisodes = async (id, season) => {
+        const res = await axios.get(`${base_url}/tv/${id}/season/${season}?api_key=${api_key}`);
+        return res.data;
+    }
     return (
         <MoviesContext.Provider value={{
             getTrendingMovies,
@@ -121,7 +129,9 @@ export const MoviesProvider = ({ children }) => {
             getTvTrailer,
             getTopRatedMoviesWithPaginateAndSort,
             getTopRatedTvShowsWithPaginateAndSort,
-            getMoviesByGenreIdAndSortAndPaginate
+            getMoviesByGenreIdAndSortAndPaginate,
+            getTvShowEpisodes,
+            getTvShowSeasons
         }}>
             {children}
         </MoviesContext.Provider>
