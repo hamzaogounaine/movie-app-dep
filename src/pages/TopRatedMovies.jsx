@@ -65,7 +65,7 @@ export default function TopRatedMovies() {
 
   return (
     <div className={`bg-background text-foreground mx-auto px min-h-screen p-4 py-8 ${mode}`}>
-      <h1 className="text-4xl font-bold mb-8 text-center">Arabic Movies</h1>
+      <h1 className="text-4xl font-bold mb-8 text-center">Top rated movies</h1>
       <div className="flex flex-col md:flex-row justify-between items-center mb-8 gap-4">
         <div className="relative w-full md:w-1/3">
           <Input
