@@ -27,7 +27,7 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
-    <Router>
+    <Router basename='movie-app-dep'>
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />

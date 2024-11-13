@@ -1,13 +1,16 @@
 {
   "name": "movies-app-with-firebase-login",
   "private": true,
+  "homepage": "https://hamzaogounainegithub.io/movie-app-dep",
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite --host",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.6.0",
