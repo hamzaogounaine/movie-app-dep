@@ -37,6 +37,12 @@ const MovieWatch = () => {
         if (value === 'vidsrc.vip') {
             setBaseUrl('https://vidsrc.vip/embed/movie');
         }
+        if (value === 'multiembed') {
+            setBaseUrl('https://multiembed.mov')
+        }
+        if (value === 'NontonGo') {
+            setBaseUrl('https://www.NontonGo.win/embed/movie')
+        }
 
         
 
@@ -48,14 +54,14 @@ const MovieWatch = () => {
                     <Loader className='animate-spin text-foreground' /><span>please wait</span> 
                 </div>
                 <iframe
-                    src={`${base_url}/${id}`}
+                    src={base_url.includes('multiembed') ? `${base_url}/?video_id=${id}&tmdb=1` : `${base_url}/${id}`}
                     allowFullScreen
                     scrolling="no"
                     width="100%"
-                    height="500px"
+                    
                     style={{ border: "none" }}
                     title="Embedded Video"
-                    className='rounded-md mt-3 z-10'
+                    className='rounded-md mt-3 z-10 sm:h-[600px] h-[500px]'
                 ></iframe>
             </div>
             <div className=' py-3'>
@@ -72,6 +78,8 @@ const MovieWatch = () => {
                         <SelectItem value="vidsrc.net">vidsrc.net</SelectItem>
                         <SelectItem value="2embed.cc">2embed.cc</SelectItem>
                         <SelectItem value="vidsrc.vip">vidsrc.vip</SelectItem>
+                        <SelectItem value="multiembed">multiembed</SelectItem>
+                        <SelectItem value="NontonGo">NontonGo</SelectItem>
                     </SelectContent>
                 </Select>
             </div>

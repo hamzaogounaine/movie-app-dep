@@ -54,6 +54,13 @@ const TvWatch = () => {
         if (value === '2embed.cc') {
             setBaseUrl('https://www.2embed.cc/embedtv');
         }
+        if (value === 'multiembed') {
+            setBaseUrl('https://multiembed.mov')
+        }
+        if (value === 'NontonGo') {
+            setBaseUrl('https://www.NontonGo.win/embed/tv')
+        }
+
 
     }
     const handleSeasonChange = (value) => {
@@ -66,11 +73,11 @@ const TvWatch = () => {
                     <Loader className='animate-spin text-foreground' /><span>please wait</span>
                 </div>
                 <iframe
-                    src={base_url.includes('2embed.cc') ? `${base_url}/${id}&s=${season}&e=${episode}` : `${base_url}/${id}/${parseInt(season)}/${parseInt(episode)}`}
+                    src={base_url.includes('2embed.cc') ? `${base_url}/${id}&s=${season}&e=${episode}` : base_url.includes('NontonGo') ? `${base_url}/?id=${id}&s=${season}&e=${episode}` : base_url.includes('multiembed') ? `${base_url}/?video_id=${id}&tmdb=1&s=${season}&e=${episode}` : `${base_url}/${id}/${parseInt(season)}/${parseInt(episode)}`}
                     allowFullScreen
                     scrolling="no"
                     width="100%"
-
+                    height="100%"
                     style={{ border: "none" }}
                     title="Embedded Video"
                     className='rounded-md mt-3 z-10 max-sm:h-[200px] h-[500px]'
@@ -90,6 +97,8 @@ const TvWatch = () => {
                             <SelectItem value="vidlink.pro">vidlink.pro</SelectItem>
                             <SelectItem value="vidsrc.net">vidsrc.net</SelectItem>
                             <SelectItem value="2embed.cc">2embed.cc</SelectItem>
+                            <SelectItem value="multiembed">multiembed</SelectItem>
+                            <SelectItem value="NontonGo">NontonGo</SelectItem>
                         </SelectContent>
                     </Select>
                     <Select onValueChange={handleSeasonChange} className='bg-background w-full'>
